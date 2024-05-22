@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">quadratic_equation_test</string>
+    <string name="variable_a">Введите a</string>
+    <string name="variable_b">Введите b</string>
+    <string name="variable_c">Введите c</string>
+    <string name="calculate">Вычислить</string>
+    <string name="detailed">Подробнее</string>
+    <string name="decision">Решение:</string>
+    <string name="equation_head">ax^2 + bx + c = 0</string>
+</resources>
