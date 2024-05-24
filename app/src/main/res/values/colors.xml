@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="background">#9effe8</color>
-    <color name="actionbar">#1ed4a3</color>
+    <color name="fragment_bg">#9effe8</color>
+    <color name="actionbar_bg">#1ed4a3</color>
+    <color name="button_bg">#D4CFD4</color>
 </resources>

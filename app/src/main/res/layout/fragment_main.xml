@@ -10,58 +10,57 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/background">
+        android:background="@color/fragment_bg">
 
         <TextView
             android:id="@+id/equation_head"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginVertical="@dimen/head_margin_vertical"
             android:gravity="center"
             android:text="@string/equation_head"
-            android:textSize="45sp" />
+            android:textSize="@dimen/head_text" />
 
         <EditText
             android:id="@+id/variable_a"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginHorizontal="@dimen/var_margin_horizontal"
             android:ems="10"
             android:hint="@string/variable_a"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="@dimen/var_min_height" />
 
         <EditText
             android:id="@+id/variable_b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="@dimen/var_margin_horizontal"
+            android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_b"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="@dimen/var_min_height" />
 
         <EditText
             android:id="@+id/variable_c"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="@dimen/var_margin_horizontal"
+            android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_c"
             android:inputType="text"
-            android:minHeight="48dp" />
+            android:minHeight="@dimen/var_min_height" />
 
         <Button
             android:id="@+id/calculate"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="130dp"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#D4CFD4"
+            android:layout_marginHorizontal="@dimen/calc_button_margin_horiz"
+            android:layout_marginTop="@dimen/calc_button_margin_top"
+            android:backgroundTint="@color/button_bg"
             android:text="@string/calculate"
             android:drawableTop="@android:drawable/ic_menu_search" />
 
@@ -69,9 +68,9 @@
             android:id="@+id/discriminant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="@dimen/disc_answer_margin_top"
             android:text="D = 50"
-            android:textSize="55sp"
+            android:textSize="@dimen/disc_answer_text"
             android:gravity="center" />
 
         <Button
@@ -79,10 +78,9 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:backgroundTint="#D4CFD4"
+            android:layout_marginTop="@dimen/detail_button_margin_top"
+            android:backgroundTint="@color/button_bg"
             android:text="@string/detailed"
-            android:visibility="gone"
             android:drawableBottom="@android:drawable/arrow_down_float" />
 
 

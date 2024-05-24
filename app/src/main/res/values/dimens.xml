@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="head_margin_vertical">40dp</dimen>
+    <dimen name="head_text">45sp</dimen>
+    <dimen name="var_margin_horizontal">50dp</dimen>
+    <dimen name="var_min_height">50dp</dimen>
+    <dimen name="var_margin_top">20dp</dimen>
+    <dimen name="calc_button_margin_horiz">130dp</dimen>
+    <dimen name="calc_button_margin_top">40dp</dimen>
+    <dimen name="disc_answer_margin_top">60dp</dimen>
+    <dimen name="disc_answer_text">55sp</dimen>
+    <dimen name="detail_button_margin_top">60dp</dimen>
+    <dimen name="detail_disc_text">30sp</dimen>
+    <dimen name="detail_disc_margin_top">20dp</dimen>
+
+</resources>
