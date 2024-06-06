@@ -7,9 +7,9 @@
     <dimen name="var_margin_top">20dp</dimen>
     <dimen name="calc_button_margin_horiz">130dp</dimen>
     <dimen name="calc_button_margin_top">40dp</dimen>
-    <dimen name="disc_answer_margin_top">60dp</dimen>
+    <dimen name="disc_answer_margin_top">45dp</dimen>
     <dimen name="disc_answer_text">55sp</dimen>
-    <dimen name="detail_button_margin_top">60dp</dimen>
+    <dimen name="detail_button_margin_top">45dp</dimen>
     <dimen name="detail_disc_text">30sp</dimen>
     <dimen name="detail_disc_margin_top">20dp</dimen>
 

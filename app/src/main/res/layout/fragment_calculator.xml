@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment">
+    tools:context=".fragments.CalculatorFrag">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
             android:layout_marginHorizontal="@dimen/var_margin_horizontal"
             android:ems="10"
             android:hint="@string/variable_a"
-            android:inputType="text"
+            android:inputType="number"
             android:minHeight="@dimen/var_min_height" />
 
         <EditText
@@ -39,7 +39,7 @@
             android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_b"
-            android:inputType="text"
+            android:inputType="number"
             android:minHeight="@dimen/var_min_height" />
 
         <EditText
@@ -50,11 +50,20 @@
             android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_c"
-            android:inputType="text"
+            android:inputType="number"
             android:minHeight="@dimen/var_min_height" />
 
+        <TextView
+            android:id="@+id/discriminant_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/discriminant_error"
+            android:gravity="center" />
+
         <Button
-            android:id="@+id/calculate"
+            android:id="@+id/btn_calculate"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,19 +78,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/disc_answer_margin_top"
-            android:text="D = 50"
             android:textSize="@dimen/disc_answer_text"
             android:gravity="center" />
 
         <Button
-            android:id="@+id/detailed"
+            android:id="@+id/btn_detailed"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/detail_button_margin_top"
             android:backgroundTint="@color/button_bg"
-            android:text="@string/detailed"
-            android:drawableBottom="@android:drawable/arrow_down_float" />
+            android:drawableBottom="@android:drawable/arrow_down_float"
+            android:text="@string/detailed" />
 
 
     </LinearLayout>

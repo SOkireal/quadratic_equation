@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DecisionFragment">
+    tools:context=".fragments.DetailsFrag">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginTop="@dimen/head_margin_vertical"
+            android:layout_marginVertical="@dimen/head_margin_vertical"
             android:text="@string/decision"
             android:textSize="@dimen/head_text" />
 
@@ -23,10 +24,9 @@
             android:id="@+id/discriminant_decision1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/detail_disc_margin_top"
             android:gravity="center"
             android:textSize="@dimen/detail_disc_text"
-            android:text="D = b * b - 4ac" />
+            android:text="@string/formula" />
 
         <TextView
             android:id="@+id/discriminant_decision2"
@@ -35,7 +35,17 @@
             android:layout_marginTop="@dimen/detail_disc_margin_top"
             android:gravity="center"
             android:textSize="@dimen/detail_disc_text"
-            android:text="D = x" />
+            android:text="@string/discriminant" />
+
+        <Button
+            android:id="@+id/back_to_main"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/detail_button_margin_top"
+            android:backgroundTint="@color/button_bg"
+            android:text="@string/button_back_to_main"
+            android:drawableTop="@android:drawable/arrow_up_float"/>
 
     </LinearLayout>
 </FrameLayout>
