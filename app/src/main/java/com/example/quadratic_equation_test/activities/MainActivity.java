@@ -12,8 +12,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FragmentRouter fragmentRouter = new FragmentRouter(getSupportFragmentManager(),
-                R.id.frame_layout);
+        FragmentRouter fragmentRouter = new FragmentRouter(
+                /* manager = */ getSupportFragmentManager(),
+                /* containerId = */ R.id.fragment_container
+        );
         fragmentRouter.showFragmentCalculator();
     }
 }

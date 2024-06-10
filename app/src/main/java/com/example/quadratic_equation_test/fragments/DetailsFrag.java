@@ -7,35 +7,48 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.example.quadratic_equation_test.R;
 import com.example.quadratic_equation_test.presenters.DetailsPresenter;
-import com.example.quadratic_equation_test.router.FragmentRouter;
 
 public class DetailsFrag extends Fragment {
 
+    DetailsPresenter presenter;
+    TextView disc_decision, disc;
+    Button back_to_main;
+    View v;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        final View v =  inflater.inflate(R.layout.fragment_details, container, false);
+    public View onCreateView(
+            LayoutInflater inflater,
+            ViewGroup container,
+            Bundle savedInstanceState
+    ) {
+        v = inflater.inflate(R.layout.fragment_details, container, false);
 
-        TextView discriminant_decision1 = v.findViewById(R.id.discriminant_decision1);
-        TextView discriminant_decision2 = v.findViewById(R.id.discriminant_decision2);
-        Button back_to_main = v.findViewById(R.id.back_to_main);
-
+        initViews();
+        presenter.formEquation();
 
         back_to_main.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentRouter fr = new FragmentRouter(getFragmentManager(), R.id.frame_layout);
-                fr.showFragmentCalculator();
+                presenter.onBackButtonClick();
             }
         });
-
         return v;
     }
 
-    public void setPresenter(DetailsPresenter detailsPresenter) {
+    public void setPresenter(DetailsPresenter presenter) {
+        this.presenter = presenter;
+    }
 
+    public void showEquation(String equation, String discriminant) {
+        disc_decision.setText(equation);
+        disc.setText(discriminant);
+    }
+
+    public void initViews() {
+        disc_decision = v.findViewById(R.id.discriminant_decision);
+        disc = v.findViewById(R.id.disc);
+        back_to_main = v.findViewById(R.id.back_to_main);
     }
 }

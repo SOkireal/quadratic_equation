@@ -4,4 +4,5 @@
     <color name="actionbar_bg">#1ed4a3</color>
     <color name="button_bg">#D4CFD4</color>
     <color name="discriminant_error">#ff3333</color>
+    <color name="text_black">#1a1a1a</color>
 </resources>
