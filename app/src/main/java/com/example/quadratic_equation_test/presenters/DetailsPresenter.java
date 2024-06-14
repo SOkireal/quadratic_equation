@@ -7,38 +7,38 @@ import com.example.quadratic_equation_test.router.FragmentRouter;
 public class DetailsPresenter {
 
     DetailsFrag view;
-    FragmentRouter fr;
-    String a, b, c, d;
+    FragmentRouter fragmentRouter;
+    String varA;
+    String varB;
+    String varC;
+    String discriminant;
     String equation;
-    CalculationDetailsModel cdm;
+    CalculationDetailsModel calculationDetailsModel;
 
-    public void setView(DetailsFrag view) {
+    public DetailsPresenter(FragmentRouter fragmentRouter, DetailsFrag view) {
+        this.fragmentRouter = fragmentRouter;
         this.view = view;
     }
 
-    public void setRouter(FragmentRouter fr) {
-        this.fr = fr;
-    }
-
-    public void setModel(CalculationDetailsModel cdm) {
-        this.cdm = cdm;
+    public void updateData(CalculationDetailsModel calculationDetailsModel) {
+        this.calculationDetailsModel = calculationDetailsModel;
     }
 
     public void formEquation() {
         getVar();
-        equation = "D = " + b + "\u00B2 " + " - 4 \u00D7 " + a + " \u00D7 " + c;
-        d = "D = " + d;
-        view.showEquation(equation, d);
+        equation = "D = " + varB + "\u00B2 " + " - 4 \u00D7 " + varA + " \u00D7 " + varC;
+        discriminant = "D = " + discriminant;
+        view.showEquation(equation, discriminant);
     }
 
     public void onBackButtonClick() {
-        fr.showFragmentCalculator();
+        fragmentRouter.showFragmentCalculator();
     }
 
-    public void getVar() {
-        a = cdm.getVar_a();
-        b = cdm.getVar_b();
-        c = cdm.getVar_c();
-        d = cdm.getDiscriminant();
+    private void getVar() {
+        varA = calculationDetailsModel.varA;
+        varB = calculationDetailsModel.varB;
+        varC = calculationDetailsModel.varC;
+        discriminant = calculationDetailsModel.discriminant;
     }
 }

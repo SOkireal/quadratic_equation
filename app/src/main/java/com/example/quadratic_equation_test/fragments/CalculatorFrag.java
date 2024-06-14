@@ -1,7 +1,12 @@
 package com.example.quadratic_equation_test.fragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,15 +20,14 @@ import com.example.quadratic_equation_test.presenters.CalculatorPresenter;
 
 public class CalculatorFrag extends Fragment {
 
-    EditText var_a;
-    EditText var_b;
-    EditText var_c;
+    EditText varA;
+    EditText varB;
+    EditText varC;
     TextView discriminant;
     TextView head_equation;
     Button btn_calculate;
     Button btn_detailed;
     CalculatorPresenter presenter;
-    View view;
 
     @Override
     public View onCreateView(
@@ -31,28 +35,15 @@ public class CalculatorFrag extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        view = inflater.inflate(R.layout.fragment_calculator, container, false);
+        Log.d("!!!", "onCreateView");
+        return inflater.inflate(R.layout.fragment_calculator, container, false);
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initViews();
-
-        btn_calculate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    presenter.onCalculateClicked(
-                            var_a.getText().toString(),
-                            var_b.getText().toString(),
-                            var_c.getText().toString()
-                            );
-            }
-        });
-
-        btn_detailed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onDetailedClicked();
-            }
-        });;
-        return view;
+        setListeners();
     }
 
     public void setPresenter(CalculatorPresenter presenter) {
@@ -86,15 +77,35 @@ public class CalculatorFrag extends Fragment {
         this.head_equation.setText(head_equation);
     }
 
-    public void initViews() {
-        if(view != null) {
-            var_a = view.findViewById(R.id.variable_a);
-            var_b = view.findViewById(R.id.variable_b);
-            var_c = view.findViewById(R.id.variable_c);
-            discriminant = view.findViewById(R.id.discriminant);
-            btn_calculate = view.findViewById(R.id.btn_calculate);
-            btn_detailed = view.findViewById(R.id.btn_detailed);
-            head_equation = view.findViewById(R.id.head_equation);
+    private void initViews() {
+        if(getView() != null) {
+            varA = getView().findViewById(R.id.variable_a);
+            varB = getView().findViewById(R.id.variable_b);
+            varC = getView().findViewById(R.id.variable_c);
+            discriminant = getView().findViewById(R.id.discriminant);
+            btn_calculate = getView().findViewById(R.id.btn_calculate);
+            btn_detailed = getView().findViewById(R.id.btn_detailed);
+            head_equation = getView().findViewById(R.id.head_equation);
         }
+    }
+
+    private void setListeners() {
+        btn_calculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onCalculateClicked(
+                        varA.getText().toString(),
+                        varB.getText().toString(),
+                        varC.getText().toString()
+                );
+            }
+        });
+
+        btn_detailed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onDetailedClicked();
+            }
+        });
     }
 }

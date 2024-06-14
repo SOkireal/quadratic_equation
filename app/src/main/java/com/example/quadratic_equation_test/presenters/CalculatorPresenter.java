@@ -1,7 +1,5 @@
 package com.example.quadratic_equation_test.presenters;
 
-import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.quadratic_equation_test.fragments.CalculatorFrag;
 import com.example.quadratic_equation_test.model.CalculationDetailsModel;
@@ -10,8 +8,9 @@ import com.example.quadratic_equation_test.router.FragmentRouter;
 import java.text.DecimalFormat;
 
 public class CalculatorPresenter {
-
-    Double a, b, c;
+    Double varA;
+    Double varB;
+    Double varC;
     String discriminant;
     String head_equation;
     CalculatorFrag view;
@@ -24,39 +23,35 @@ public class CalculatorPresenter {
         this.view = view;
     }
 
-    public void updateData(CalculationDetailsModel cdm) {
-        this.calculationDetailsModel = cdm;
-    }
-
     public void onCalculateClicked(
-            String var_a,
-            String var_b,
-            String var_c
+            String varA,
+            String varB,
+            String varC
     ) {
-        if (!var_a.equals("") && !var_b.equals("") && !var_c.equals("")) {
-            a = Double.parseDouble(var_a);
-            b = Double.parseDouble(var_b);
-            c = Double.parseDouble(var_c);
-            discriminant = decimalFormat.format(b * b - 4 * a * c);
+        if (!varA.equals("") && !varB.equals("") && !varC.equals("")) {
+            this.varA = Double.parseDouble(varA);
+            this.varB = Double.parseDouble(varB);
+            this.varC = Double.parseDouble(varC);
+            discriminant = decimalFormat.format(this.varB * this.varB - 4 * this.varA * this.varC);
             saveVar();
             view.showDisc(discriminant);
             head_equation = String.format(
                     "%sx\u00B2 + %sx + %s = 0",
-                    decimalFormat.format(a), decimalFormat.format(b), decimalFormat.format(c)
+                    decimalFormat.format(this.varA), decimalFormat.format(this.varB), decimalFormat.format(this.varC)
             );
             view.showHeadEquation(head_equation);
         } else view.showDiscError();
     }
 
     public void onDetailedClicked() {
-        fragmentRouter.showFragmentDetails();
+        fragmentRouter.showFragmentDetails(calculationDetailsModel);
     }
 
-    public void saveVar() {
-        calculationDetailsModel.saveValues(
-                decimalFormat.format(a),
-                decimalFormat.format(b),
-                decimalFormat.format(c),
+    private void saveVar() {
+        calculationDetailsModel = new CalculationDetailsModel(
+                decimalFormat.format(varA),
+                decimalFormat.format(varB),
+                decimalFormat.format(varC),
                 discriminant);
     }
 }

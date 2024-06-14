@@ -14,7 +14,6 @@ public class FragmentRouter {
 
     private final FragmentManager manager;
     private final int containerId;
-    CalculationDetailsModel cdm;
 
     public FragmentRouter(FragmentManager manager, int containerId) {
         this.manager = manager;
@@ -24,19 +23,15 @@ public class FragmentRouter {
     public void showFragmentCalculator() {
         CalculatorFrag calcFrag = new CalculatorFrag();
         CalculatorPresenter calcPresenter = new CalculatorPresenter(this, calcFrag);
-        cdm = new CalculationDetailsModel();
         calcFrag.setPresenter(calcPresenter);
-        calcPresenter.updateData(cdm);
         showFragment(calcFrag);
     }
 
-    public void showFragmentDetails() {
+    public void showFragmentDetails(CalculationDetailsModel calculationDetailsModel) {
         DetailsFrag detailsFrag = new DetailsFrag();
-        DetailsPresenter detailsPresenter = new DetailsPresenter();
+        DetailsPresenter detailsPresenter = new DetailsPresenter(this, detailsFrag);
         detailsFrag.setPresenter(detailsPresenter);
-        detailsPresenter.setView(detailsFrag);
-        detailsPresenter.setRouter(this);
-        detailsPresenter.setModel(cdm);
+        detailsPresenter.updateData(calculationDetailsModel);
         showFragment(detailsFrag);
     }
 

@@ -1,6 +1,9 @@
 package com.example.quadratic_equation_test.fragments;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +16,9 @@ import com.example.quadratic_equation_test.presenters.DetailsPresenter;
 public class DetailsFrag extends Fragment {
 
     DetailsPresenter presenter;
-    TextView disc_decision, disc;
+    TextView disc_decision;
+    TextView discriminant;
     Button back_to_main;
-    View v;
 
     @Override
     public View onCreateView(
@@ -23,18 +26,15 @@ public class DetailsFrag extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        v = inflater.inflate(R.layout.fragment_details, container, false);
+        return inflater.inflate(R.layout.fragment_details, container, false);
+    }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         initViews();
         presenter.formEquation();
-
-        back_to_main.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.onBackButtonClick();
-            }
-        });
-        return v;
+        setListeners();
     }
 
     public void setPresenter(DetailsPresenter presenter) {
@@ -43,12 +43,23 @@ public class DetailsFrag extends Fragment {
 
     public void showEquation(String equation, String discriminant) {
         disc_decision.setText(equation);
-        disc.setText(discriminant);
+        this.discriminant.setText(discriminant);
     }
 
-    public void initViews() {
-        disc_decision = v.findViewById(R.id.discriminant_decision);
-        disc = v.findViewById(R.id.disc);
-        back_to_main = v.findViewById(R.id.back_to_main);
+    private void initViews() {
+        if (getView() != null) {
+            disc_decision = getView().findViewById(R.id.discriminant_decision);
+            discriminant = getView().findViewById(R.id.disc);
+            back_to_main = getView().findViewById(R.id.back_to_main);
+        }
+    }
+
+    private void setListeners() {
+        back_to_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onBackButtonClick();
+            }
+        });
     }
 }
