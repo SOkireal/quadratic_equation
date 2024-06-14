@@ -26,7 +26,7 @@ public class DetailsPresenter {
 
     public void formEquation() {
         getVar();
-        equation = "D = " + b + " * " + b + " - 4 * " + a + " * " + c;
+        equation = "D = " + b + "\u00B2 " + " - 4 \u00D7 " + a + " \u00D7 " + c;
         d = "D = " + d;
         view.showEquation(equation, d);
     }

@@ -23,12 +23,10 @@ public class FragmentRouter {
 
     public void showFragmentCalculator() {
         CalculatorFrag calcFrag = new CalculatorFrag();
-        CalculatorPresenter calcPresenter = new CalculatorPresenter();
+        CalculatorPresenter calcPresenter = new CalculatorPresenter(this, calcFrag);
         cdm = new CalculationDetailsModel();
         calcFrag.setPresenter(calcPresenter);
-        calcPresenter.setView(calcFrag);
-        calcPresenter.setRouter(this);
-        calcPresenter.setModel(cdm);
+        calcPresenter.updateData(cdm);
         showFragment(calcFrag);
     }
 

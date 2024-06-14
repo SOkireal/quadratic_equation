@@ -15,11 +15,15 @@ import com.example.quadratic_equation_test.presenters.CalculatorPresenter;
 
 public class CalculatorFrag extends Fragment {
 
-    EditText var_a, var_b, var_c;
-    TextView discriminant, head_equation;
-    Button btn_calculate, btn_detailed;
+    EditText var_a;
+    EditText var_b;
+    EditText var_c;
+    TextView discriminant;
+    TextView head_equation;
+    Button btn_calculate;
+    Button btn_detailed;
     CalculatorPresenter presenter;
-    View v;
+    View view;
 
     @Override
     public View onCreateView(
@@ -27,14 +31,18 @@ public class CalculatorFrag extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        v = inflater.inflate(R.layout.fragment_calculator, container, false);
+        view = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         initViews();
 
         btn_calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    presenter.onCalculateClicked(var_a, var_b, var_c, discriminant);
+                    presenter.onCalculateClicked(
+                            var_a.getText().toString(),
+                            var_b.getText().toString(),
+                            var_c.getText().toString()
+                            );
             }
         });
 
@@ -44,33 +52,33 @@ public class CalculatorFrag extends Fragment {
                 presenter.onDetailedClicked();
             }
         });;
-        return v;
+        return view;
     }
 
     public void setPresenter(CalculatorPresenter presenter) {
         this.presenter = presenter;
     }
 
-    public void showDiscError(TextView viewDisc) {
-        viewDisc.setTextSize(
+    public void showDiscError() {
+        discriminant.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_error_text)
         );
-        viewDisc.setTextColor(this.getResources().getColor(R.color.discriminant_error));
-        viewDisc.setText(R.string.discriminant_error);
-        viewDisc.setVisibility(View.VISIBLE);
+        discriminant.setTextColor(this.getResources().getColor(R.color.discriminant_error));
+        discriminant.setText(R.string.discriminant_error);
+        discriminant.setVisibility(View.VISIBLE);
         btn_detailed.setVisibility(View.GONE);
         head_equation.setText(getResources().getString(R.string.equation_head));
     }
 
-    public void showDisc(TextView viewDisc, String discriminant) {
-        viewDisc.setText(discriminant);
-        viewDisc.setTextSize(
+    public void showDisc(String discriminant) {
+        this.discriminant.setText(discriminant);
+        this.discriminant.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_answer_text)
         );
-        viewDisc.setTextColor(this.getResources().getColor(R.color.text_black));
-        viewDisc.setVisibility(View.VISIBLE);
+        this.discriminant.setTextColor(this.getResources().getColor(R.color.text_black));
+        this.discriminant.setVisibility(View.VISIBLE);
         btn_detailed.setVisibility(View.VISIBLE);
     }
 
@@ -79,12 +87,14 @@ public class CalculatorFrag extends Fragment {
     }
 
     public void initViews() {
-        var_a = v.findViewById(R.id.variable_a);
-        var_b = v.findViewById(R.id.variable_b);
-        var_c = v.findViewById(R.id.variable_c);
-        discriminant = v.findViewById(R.id.discriminant);
-        btn_calculate = v.findViewById(R.id.btn_calculate);
-        btn_detailed = v.findViewById(R.id.btn_detailed);
-        head_equation = v.findViewById(R.id.head_equation);
+        if(view != null) {
+            var_a = view.findViewById(R.id.variable_a);
+            var_b = view.findViewById(R.id.variable_b);
+            var_c = view.findViewById(R.id.variable_c);
+            discriminant = view.findViewById(R.id.discriminant);
+            btn_calculate = view.findViewById(R.id.btn_calculate);
+            btn_detailed = view.findViewById(R.id.btn_detailed);
+            head_equation = view.findViewById(R.id.head_equation);
+        }
     }
 }

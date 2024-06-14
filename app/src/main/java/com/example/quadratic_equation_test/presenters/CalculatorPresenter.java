@@ -12,51 +12,51 @@ import java.text.DecimalFormat;
 public class CalculatorPresenter {
 
     Double a, b, c;
-    String d, head_equation;
+    String discriminant;
+    String head_equation;
     CalculatorFrag view;
-    FragmentRouter fr;
-    CalculationDetailsModel cdm;
-    DecimalFormat df = new DecimalFormat("0.#");
+    FragmentRouter fragmentRouter;
+    CalculationDetailsModel calculationDetailsModel;
+    DecimalFormat decimalFormat = new DecimalFormat("0.#");
 
-    public void setRouter(FragmentRouter fr) {
-        this.fr = fr;
-    }
-
-    public void setView(CalculatorFrag view) {
+    public CalculatorPresenter(FragmentRouter fragmentRouter, CalculatorFrag view) {
+        this.fragmentRouter = fragmentRouter;
         this.view = view;
     }
 
-    public void setModel(CalculationDetailsModel cdm) {
-        this.cdm = cdm;
+    public void updateData(CalculationDetailsModel cdm) {
+        this.calculationDetailsModel = cdm;
     }
 
     public void onCalculateClicked(
-            EditText var_a,
-            EditText var_b,
-            EditText var_c,
-            TextView discriminant
+            String var_a,
+            String var_b,
+            String var_c
     ) {
-        if (!var_a.getText().toString().equals("") && !var_b.getText().toString().equals("")
-                && !var_c.getText().toString().equals("")) {
-            a = Double.parseDouble(var_a.getText().toString());
-            b = Double.parseDouble(var_b.getText().toString());
-            c = Double.parseDouble(var_c.getText().toString());
-            d = df.format(b * b - 4 * a * c);
+        if (!var_a.equals("") && !var_b.equals("") && !var_c.equals("")) {
+            a = Double.parseDouble(var_a);
+            b = Double.parseDouble(var_b);
+            c = Double.parseDouble(var_c);
+            discriminant = decimalFormat.format(b * b - 4 * a * c);
             saveVar();
-            view.showDisc(discriminant, d);
-            head_equation = df.format(a) + "x^2 + " + df.format(b) + "x + " + df.format(c) + " = 0";
+            view.showDisc(discriminant);
+            head_equation = String.format(
+                    "%sx\u00B2 + %sx + %s = 0",
+                    decimalFormat.format(a), decimalFormat.format(b), decimalFormat.format(c)
+            );
             view.showHeadEquation(head_equation);
-        } else view.showDiscError(discriminant);
+        } else view.showDiscError();
     }
 
     public void onDetailedClicked() {
-        fr.showFragmentDetails();
+        fragmentRouter.showFragmentDetails();
     }
 
     public void saveVar() {
-        cdm.setVar_a(df.format(a));
-        cdm.setVar_b(df.format(b));
-        cdm.setVar_c(df.format(c));
-        cdm.setDiscriminant(d);
+        calculationDetailsModel.saveValues(
+                decimalFormat.format(a),
+                decimalFormat.format(b),
+                decimalFormat.format(c),
+                discriminant);
     }
 }
