@@ -13,4 +13,5 @@
     <string name="discriminant_error">Поля не должны быть пусты</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="unknown_error">Ошибка, возможно вы ввели неверный символ</string>
 </resources>

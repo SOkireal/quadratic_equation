@@ -1,10 +1,13 @@
 package com.example.quadratic_equation_test.presenters;
 
 
+import android.nfc.Tag;
+
 import com.example.quadratic_equation_test.fragments.CalculatorFrag;
 import com.example.quadratic_equation_test.model.CalculationDetailsModel;
 import com.example.quadratic_equation_test.router.FragmentRouter;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class CalculatorPresenter {
@@ -28,19 +31,29 @@ public class CalculatorPresenter {
             String varB,
             String varC
     ) {
-        if (!varA.equals("") && !varB.equals("") && !varC.equals("")) {
+        try {
             this.varA = Double.parseDouble(varA);
             this.varB = Double.parseDouble(varB);
             this.varC = Double.parseDouble(varC);
-            discriminant = decimalFormat.format(this.varB * this.varB - 4 * this.varA * this.varC);
+            discriminant = decimalFormat.format(
+                    this.varB * this.varB - 4 * this.varA * this.varC
+                    );
             saveVar();
             view.showDisc(discriminant);
             head_equation = String.format(
                     "%sx\u00B2 + %sx + %s = 0",
-                    decimalFormat.format(this.varA), decimalFormat.format(this.varB), decimalFormat.format(this.varC)
+                    decimalFormat.format(this.varA),
+                    decimalFormat.format(this.varB),
+                    decimalFormat.format(this.varC)
             );
             view.showHeadEquation(head_equation);
-        } else view.showDiscError();
+        } catch(Exception e) {
+            view.showUnknownError();
+        }
+
+        if (varA.equals("") && varB.equals("") && varC.equals("")) {
+            view.showEmptyFieldError();
+        }
     }
 
     public void onDetailedClicked() {

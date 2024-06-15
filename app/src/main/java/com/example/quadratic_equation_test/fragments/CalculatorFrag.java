@@ -50,13 +50,25 @@ public class CalculatorFrag extends Fragment {
         this.presenter = presenter;
     }
 
-    public void showDiscError() {
+    public void showEmptyFieldError() {
         discriminant.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_error_text)
         );
         discriminant.setTextColor(this.getResources().getColor(R.color.discriminant_error));
         discriminant.setText(R.string.discriminant_error);
+        discriminant.setVisibility(View.VISIBLE);
+        btn_detailed.setVisibility(View.GONE);
+        head_equation.setText(getResources().getString(R.string.equation_head));
+    }
+
+    public void showUnknownError() {
+        discriminant.setTextSize(
+                TypedValue.COMPLEX_UNIT_PX,
+                this.getResources().getDimension(R.dimen.disc_error_text)
+        );
+        discriminant.setTextColor(this.getResources().getColor(R.color.discriminant_error));
+        discriminant.setText(R.string.unknown_error);
         discriminant.setVisibility(View.VISIBLE);
         btn_detailed.setVisibility(View.GONE);
         head_equation.setText(getResources().getString(R.string.equation_head));
