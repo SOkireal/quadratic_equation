@@ -20,14 +20,14 @@ public class DetailsPresenter {
         this.view = view;
     }
 
-    public void updateData(CalculationDetailsModel calculationDetailsModel) {
-        this.calculationDetailsModel = calculationDetailsModel;
+    public void updateData(CalculationDetailsModel model) {
+        calculationDetailsModel = model;
     }
 
     public void formEquation() {
         getVar();
-        equation = "D = " + varB + "\u00B2 " + " - 4 \u00D7 " + varA + " \u00D7 " + varC;
-        discriminant = "D = " + discriminant;
+        equation = String.format("D = %s\u00B2 - 4 \u00D7 %s \u00D7 %s", varB, varA, varC);
+        discriminant = String.format("D = %s", discriminant);
         view.showEquation(equation, discriminant);
     }
 

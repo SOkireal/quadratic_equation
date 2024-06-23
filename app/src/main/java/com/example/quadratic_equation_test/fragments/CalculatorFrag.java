@@ -23,10 +23,10 @@ public class CalculatorFrag extends Fragment {
     EditText varA;
     EditText varB;
     EditText varC;
-    TextView discriminant;
-    TextView head_equation;
-    Button btn_calculate;
-    Button btn_detailed;
+    TextView discriminantAnswer;
+    TextView headEquation;
+    Button btnCalculate;
+    Button btnDetailed;
     CalculatorPresenter presenter;
 
     @Override
@@ -35,7 +35,6 @@ public class CalculatorFrag extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        Log.d("!!!", "onCreateView");
         return inflater.inflate(R.layout.fragment_calculator, container, false);
     }
 
@@ -51,42 +50,42 @@ public class CalculatorFrag extends Fragment {
     }
 
     public void showEmptyFieldError() {
-        discriminant.setTextSize(
+        discriminantAnswer.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_error_text)
         );
-        discriminant.setTextColor(this.getResources().getColor(R.color.discriminant_error));
-        discriminant.setText(R.string.discriminant_error);
-        discriminant.setVisibility(View.VISIBLE);
-        btn_detailed.setVisibility(View.GONE);
-        head_equation.setText(getResources().getString(R.string.equation_head));
+        discriminantAnswer.setTextColor(this.getResources().getColor(R.color.discriminant_error));
+        discriminantAnswer.setText(R.string.discriminant_error);
+        discriminantAnswer.setVisibility(View.VISIBLE);
+        btnDetailed.setVisibility(View.GONE);
+        headEquation.setText(getResources().getString(R.string.equation_head));
     }
 
     public void showUnknownError() {
-        discriminant.setTextSize(
+        discriminantAnswer.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_error_text)
         );
-        discriminant.setTextColor(this.getResources().getColor(R.color.discriminant_error));
-        discriminant.setText(R.string.unknown_error);
-        discriminant.setVisibility(View.VISIBLE);
-        btn_detailed.setVisibility(View.GONE);
-        head_equation.setText(getResources().getString(R.string.equation_head));
+        discriminantAnswer.setTextColor(this.getResources().getColor(R.color.discriminant_error));
+        discriminantAnswer.setText(R.string.unknown_error);
+        discriminantAnswer.setVisibility(View.VISIBLE);
+        btnDetailed.setVisibility(View.GONE);
+        headEquation.setText(getResources().getString(R.string.equation_head));
     }
 
     public void showDisc(String discriminant) {
-        this.discriminant.setText(discriminant);
-        this.discriminant.setTextSize(
+        discriminantAnswer.setText(discriminant);
+        discriminantAnswer.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_answer_text)
         );
-        this.discriminant.setTextColor(this.getResources().getColor(R.color.text_black));
-        this.discriminant.setVisibility(View.VISIBLE);
-        btn_detailed.setVisibility(View.VISIBLE);
+        discriminantAnswer.setTextColor(this.getResources().getColor(R.color.text_black));
+        discriminantAnswer.setVisibility(View.VISIBLE);
+        btnDetailed.setVisibility(View.VISIBLE);
     }
 
-    public void showHeadEquation(String head_equation) {
-        this.head_equation.setText(head_equation);
+    public void showHeadEquation(String headEquation) {
+        this.headEquation.setText(headEquation);
     }
 
     private void initViews() {
@@ -94,15 +93,15 @@ public class CalculatorFrag extends Fragment {
             varA = getView().findViewById(R.id.variable_a);
             varB = getView().findViewById(R.id.variable_b);
             varC = getView().findViewById(R.id.variable_c);
-            discriminant = getView().findViewById(R.id.discriminant);
-            btn_calculate = getView().findViewById(R.id.btn_calculate);
-            btn_detailed = getView().findViewById(R.id.btn_detailed);
-            head_equation = getView().findViewById(R.id.head_equation);
+            discriminantAnswer = getView().findViewById(R.id.discriminant);
+            btnCalculate = getView().findViewById(R.id.btn_calculate);
+            btnDetailed = getView().findViewById(R.id.btn_detailed);
+            headEquation = getView().findViewById(R.id.head_equation);
         }
     }
 
     private void setListeners() {
-        btn_calculate.setOnClickListener(new View.OnClickListener() {
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onCalculateClicked(
@@ -113,7 +112,7 @@ public class CalculatorFrag extends Fragment {
             }
         });
 
-        btn_detailed.setOnClickListener(new View.OnClickListener() {
+        btnDetailed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onDetailedClicked();

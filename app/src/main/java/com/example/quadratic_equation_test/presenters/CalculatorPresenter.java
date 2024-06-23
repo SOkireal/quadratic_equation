@@ -1,13 +1,10 @@
 package com.example.quadratic_equation_test.presenters;
 
 
-import android.nfc.Tag;
 
 import com.example.quadratic_equation_test.fragments.CalculatorFrag;
 import com.example.quadratic_equation_test.model.CalculationDetailsModel;
 import com.example.quadratic_equation_test.router.FragmentRouter;
-
-import java.io.IOException;
 import java.text.DecimalFormat;
 
 public class CalculatorPresenter {
@@ -15,7 +12,7 @@ public class CalculatorPresenter {
     Double varB;
     Double varC;
     String discriminant;
-    String head_equation;
+    String headEquation;
     CalculatorFrag view;
     FragmentRouter fragmentRouter;
     CalculationDetailsModel calculationDetailsModel;
@@ -40,13 +37,13 @@ public class CalculatorPresenter {
                     );
             saveVar();
             view.showDisc(discriminant);
-            head_equation = String.format(
+            headEquation = String.format(
                     "%sx\u00B2 + %sx + %s = 0",
                     decimalFormat.format(this.varA),
                     decimalFormat.format(this.varB),
                     decimalFormat.format(this.varC)
             );
-            view.showHeadEquation(head_equation);
+            view.showHeadEquation(headEquation);
         } catch(Exception e) {
             view.showUnknownError();
         }
@@ -65,6 +62,7 @@ public class CalculatorPresenter {
                 decimalFormat.format(varA),
                 decimalFormat.format(varB),
                 decimalFormat.format(varC),
-                discriminant);
+                discriminant
+        );
     }
 }

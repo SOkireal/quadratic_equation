@@ -16,9 +16,9 @@ import com.example.quadratic_equation_test.presenters.DetailsPresenter;
 public class DetailsFrag extends Fragment {
 
     DetailsPresenter presenter;
-    TextView disc_decision;
-    TextView discriminant;
-    Button back_to_main;
+    TextView discDecision;
+    TextView discriminantAnswer;
+    Button backToMain;
 
     @Override
     public View onCreateView(
@@ -42,20 +42,20 @@ public class DetailsFrag extends Fragment {
     }
 
     public void showEquation(String equation, String discriminant) {
-        disc_decision.setText(equation);
-        this.discriminant.setText(discriminant);
+        discDecision.setText(equation);
+        discriminantAnswer.setText(discriminant);
     }
 
     private void initViews() {
         if (getView() != null) {
-            disc_decision = getView().findViewById(R.id.discriminant_decision);
-            discriminant = getView().findViewById(R.id.disc);
-            back_to_main = getView().findViewById(R.id.back_to_main);
+            discDecision = getView().findViewById(R.id.discriminant_decision);
+            discriminantAnswer = getView().findViewById(R.id.disc);
+            backToMain = getView().findViewById(R.id.back_to_main);
         }
     }
 
     private void setListeners() {
-        back_to_main.setOnClickListener(new View.OnClickListener() {
+        backToMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onBackButtonClick();
