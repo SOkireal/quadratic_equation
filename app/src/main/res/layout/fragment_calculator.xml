@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CalculatorFrag">
+    tools:context=".fragments.CalculationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +28,7 @@
             android:layout_marginHorizontal="@dimen/var_margin_horizontal"
             android:ems="10"
             android:hint="@string/variable_a"
-            android:inputType="numberDecimal"
+            android:inputType="numberDecimal|numberSigned"
             android:minHeight="@dimen/var_min_height" />
 
         <EditText
@@ -40,7 +39,7 @@
             android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_b"
-            android:inputType="numberDecimal"
+            android:inputType="numberDecimal|numberSigned"
             android:minHeight="@dimen/var_min_height" />
 
         <EditText
@@ -51,7 +50,7 @@
             android:layout_marginTop="@dimen/var_margin_top"
             android:ems="10"
             android:hint="@string/variable_c"
-            android:inputType="numberDecimal"
+            android:inputType="numberDecimal|numberSigned"
             android:minHeight="@dimen/var_min_height" />
 
         <Button

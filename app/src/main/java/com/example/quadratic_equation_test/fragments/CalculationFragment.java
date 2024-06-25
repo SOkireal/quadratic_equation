@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.example.quadratic_equation_test.R;
-import com.example.quadratic_equation_test.presenters.CalculatorPresenter;
+import com.example.quadratic_equation_test.presenters.CalculationPresenter;
 
 
-public class CalculatorFrag extends Fragment {
+public class CalculationFragment extends Fragment {
 
     EditText varA;
     EditText varB;
@@ -27,7 +26,8 @@ public class CalculatorFrag extends Fragment {
     TextView headEquation;
     Button btnCalculate;
     Button btnDetailed;
-    CalculatorPresenter presenter;
+    CalculationPresenter presenter;
+    public static final String TAG = "CalculatorFrag";
 
     @Override
     public View onCreateView(
@@ -45,7 +45,7 @@ public class CalculatorFrag extends Fragment {
         setListeners();
     }
 
-    public void setPresenter(CalculatorPresenter presenter) {
+    public void setPresenter(CalculationPresenter presenter) {
         this.presenter = presenter;
     }
 
@@ -61,7 +61,7 @@ public class CalculatorFrag extends Fragment {
         headEquation.setText(getResources().getString(R.string.equation_head));
     }
 
-    public void showUnknownError() {
+    public void showIncorrectInputNum() {
         discriminantAnswer.setTextSize(
                 TypedValue.COMPLEX_UNIT_PX,
                 this.getResources().getDimension(R.dimen.disc_error_text)
@@ -105,9 +105,9 @@ public class CalculatorFrag extends Fragment {
             @Override
             public void onClick(View v) {
                 presenter.onCalculateClicked(
-                        varA.getText().toString(),
-                        varB.getText().toString(),
-                        varC.getText().toString()
+                        varA.getText().toString().trim(),
+                        varB.getText().toString().trim(),
+                        varC.getText().toString().trim()
                 );
             }
         });

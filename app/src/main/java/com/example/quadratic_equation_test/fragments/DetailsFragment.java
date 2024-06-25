@@ -13,12 +13,13 @@ import android.widget.TextView;
 import com.example.quadratic_equation_test.R;
 import com.example.quadratic_equation_test.presenters.DetailsPresenter;
 
-public class DetailsFrag extends Fragment {
+public class DetailsFragment extends Fragment {
 
     DetailsPresenter presenter;
     TextView discDecision;
     TextView discriminantAnswer;
     Button backToMain;
+    public static final String TAG = "DetailsFrag";
 
     @Override
     public View onCreateView(

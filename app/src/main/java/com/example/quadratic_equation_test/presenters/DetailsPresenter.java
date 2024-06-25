@@ -1,12 +1,12 @@
 package com.example.quadratic_equation_test.presenters;
 
-import com.example.quadratic_equation_test.fragments.DetailsFrag;
+import com.example.quadratic_equation_test.fragments.DetailsFragment;
 import com.example.quadratic_equation_test.model.CalculationDetailsModel;
 import com.example.quadratic_equation_test.router.FragmentRouter;
 
 public class DetailsPresenter {
 
-    DetailsFrag view;
+    DetailsFragment view;
     FragmentRouter fragmentRouter;
     String varA;
     String varB;
@@ -15,7 +15,7 @@ public class DetailsPresenter {
     String equation;
     CalculationDetailsModel calculationDetailsModel;
 
-    public DetailsPresenter(FragmentRouter fragmentRouter, DetailsFrag view) {
+    public DetailsPresenter(FragmentRouter fragmentRouter, DetailsFragment view) {
         this.fragmentRouter = fragmentRouter;
         this.view = view;
     }

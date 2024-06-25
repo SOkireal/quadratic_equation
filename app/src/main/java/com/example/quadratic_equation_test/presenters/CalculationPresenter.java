@@ -2,23 +2,23 @@ package com.example.quadratic_equation_test.presenters;
 
 
 
-import com.example.quadratic_equation_test.fragments.CalculatorFrag;
+import com.example.quadratic_equation_test.fragments.CalculationFragment;
 import com.example.quadratic_equation_test.model.CalculationDetailsModel;
 import com.example.quadratic_equation_test.router.FragmentRouter;
 import java.text.DecimalFormat;
 
-public class CalculatorPresenter {
+public class CalculationPresenter {
     Double varA;
     Double varB;
     Double varC;
     String discriminant;
     String headEquation;
-    CalculatorFrag view;
+    CalculationFragment view;
     FragmentRouter fragmentRouter;
     CalculationDetailsModel calculationDetailsModel;
     DecimalFormat decimalFormat = new DecimalFormat("0.#");
 
-    public CalculatorPresenter(FragmentRouter fragmentRouter, CalculatorFrag view) {
+    public CalculationPresenter(FragmentRouter fragmentRouter, CalculationFragment view) {
         this.fragmentRouter = fragmentRouter;
         this.view = view;
     }
@@ -28,13 +28,15 @@ public class CalculatorPresenter {
             String varB,
             String varC
     ) {
-        try {
+        if (varA.equals("") || varB.equals("") || varC.equals("")) {
+            view.showEmptyFieldError();
+        } else if (!varA.equals(".") && !varB.equals(".") && !varC.equals(".")) {
             this.varA = Double.parseDouble(varA);
             this.varB = Double.parseDouble(varB);
             this.varC = Double.parseDouble(varC);
             discriminant = decimalFormat.format(
                     this.varB * this.varB - 4 * this.varA * this.varC
-                    );
+            );
             saveVar();
             view.showDisc(discriminant);
             headEquation = String.format(
@@ -44,13 +46,7 @@ public class CalculatorPresenter {
                     decimalFormat.format(this.varC)
             );
             view.showHeadEquation(headEquation);
-        } catch(Exception e) {
-            view.showUnknownError();
-        }
-
-        if (varA.equals("") && varB.equals("") && varC.equals("")) {
-            view.showEmptyFieldError();
-        }
+        } else view.showIncorrectInputNum();
     }
 
     public void onDetailedClicked() {
